@@ -29,6 +29,8 @@
 //   );
 // }
 
+import Image from "next/image";
+
 export default function AboutSection() {
   return (
     <section
@@ -39,7 +41,15 @@ export default function AboutSection() {
         {/* Left Side - Placeholder for Image or Illustration */}
         <div className="flex w-3/4 justify-center md:w-1/2">
           {/* Placeholder for an Image or Illustration */}
-          <div className="h-64 w-64 rounded-lg bg-gray-300 md:h-80 md:w-80"></div>
+          <div className="h-64 w-64 rounded-lg bg-gray-300 md:h-80 md:w-80">
+            <Image
+              className="h-64 w-full object-cover md:h-80 md:w-80"
+              src="https://bb7xy0ug64.ufs.sh/f/IfFp6TjRCGFmGI5GniPO2tzh9Xuf73BoWwqeNa1ngiyFvLYZ"
+              alt="Nemesio L. Resonable Jr."
+              height={80}
+              width={80}
+            />
+          </div>
         </div>
 
         {/* Right Side - About Content */}

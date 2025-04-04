@@ -20,6 +20,8 @@
 //               alt="Card Image"
 //             />
 
+import Image from "next/image";
+
 //             {/* Card Content */}
 //             <div className="h-32 p-4">
 //               <h2 className="text-xl font-semibold text-gray-800">
@@ -153,10 +155,12 @@ export default function ProjectSection() {
       <div className="flex w-full max-w-5xl flex-col items-center gap-6 md:flex-row md:justify-center">
         {/* Card 1 */}
         <div className="flex h-full w-3/4 flex-col overflow-hidden rounded-lg bg-white shadow-lg md:w-1/2">
-          <img
+          <Image
             className="h-48 w-full object-cover"
-            src="https://via.placeholder.com/400"
-            alt="Card Image"
+            src="https://bb7xy0ug64.ufs.sh/f/IfFp6TjRCGFmwFF3P2RPm97bESpjdYuoIJUTgq8XA52RerZW"
+            alt="Simple file uploading web application"
+            height={480}
+            width={480}
           />
           <div className="flex flex-grow flex-col p-4">
             <h2 className="text-xl font-semibold text-gray-800">
@@ -197,18 +201,26 @@ export default function ProjectSection() {
 
           {/* Card Actions */}
           <div className="flex justify-end p-4">
-            <button className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800">
-              View Source
-            </button>
+            <a
+              href="https://github.com/nemesioo/mzio_results_uploading"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800">
+                View Source
+              </button>
+            </a>
           </div>
         </div>
 
         {/* Card 2 */}
         <div className="flex h-full w-3/4 flex-col overflow-hidden rounded-lg bg-white shadow-lg md:w-1/2">
-          <img
+          <Image
             className="h-48 w-full object-cover"
-            src="https://via.placeholder.com/400"
-            alt="Card Image"
+            src="https://bb7xy0ug64.ufs.sh/f/IfFp6TjRCGFmozz44wEaAu2fdwU4HXpBJ9EFLi6vrmCnkK1j"
+            alt="Simple Currency Converter"
+            height={240}
+            width={240}
           />
           <div className="flex flex-grow flex-col p-4">
             <h2 className="text-xl font-semibold text-gray-800">
@@ -246,9 +258,15 @@ export default function ProjectSection() {
 
           {/* Card Actions */}
           <div className="flex justify-end p-4">
-            <button className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800">
-              View Source
-            </button>
+            <a
+              href="https://github.com/nemesioo/mzio_currency_converter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800">
+                View Source
+              </button>
+            </a>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@ import "~/styles/globals.css";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
+import { TanStackProvider } from "./_components/tanstack_provider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "MZIO",
@@ -18,7 +20,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body>{children}</body>
+      <body>
+        <TanStackProvider>{children}</TanStackProvider>
+        <Toaster />
+      </body>
     </html>
   );
 }

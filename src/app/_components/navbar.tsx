@@ -1,7 +1,10 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { clientDownloadFile } from "../_core/actions";
+import { toast } from "sonner";
 
 const Navbar = () => {
   // State for toggling the mobile menu
@@ -11,6 +14,23 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const { isPending: isDownloadingFile, mutate: client_downloadFile } =
+    useMutation({
+      mutationFn: clientDownloadFile,
+      onError: (error) => {
+        toast.error(error.message);
+      },
+      onSuccess: (data) => {
+        toast.success("CV downloaded");
+      },
+    });
+
+  useEffect(() => {
+    if (isDownloadingFile) {
+      toast.info("Downloading CV...");
+    }
+  }, [isDownloadingFile]);
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full bg-gray-800 p-4 text-white shadow-md">
@@ -34,13 +54,21 @@ const Navbar = () => {
           <Link href="#contact" passHref>
             <span className="hover:text-gray-400">Contact</span>
           </Link>
-          <a
-            href="/path-to-your-cv.pdf"
-            download
+          <button
+            onClick={() => {
+              //   const link = document.createElement("a");
+              //   link.href =
+              //     "https://bb7xy0ug64.ufs.sh/f/IfFp6TjRCGFmgQggDS6VWuN3LGfEHqlmOTJCodcZe80b1BSI";
+              //   link.download = "mesio-cv.pdf";
+              //   document.body.appendChild(link);
+              //   link.click();
+              //   document.body.removeChild(link);
+              client_downloadFile();
+            }}
             className="rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white shadow-md transition duration-300 hover:bg-blue-800"
           >
             Download CV
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -99,13 +127,21 @@ const Navbar = () => {
           <Link href="#contacts" passHref>
             <span className="block text-white">Contact</span>
           </Link>
-          <a
-            href="/path-to-your-cv.pdf"
-            download
+          <button
+            onClick={() => {
+              //   const link = document.createElement("a");
+              //   link.href =
+              //     "https://bb7xy0ug64.ufs.sh/f/IfFp6TjRCGFmgQggDS6VWuN3LGfEHqlmOTJCodcZe80b1BSI";
+              //   link.download = "mesio-cv.pdf";
+              //   document.body.appendChild(link);
+              //   link.click();
+              //   document.body.removeChild(link);
+              client_downloadFile();
+            }}
             className="rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white shadow-md transition duration-300 hover:bg-blue-800"
           >
             Download CV
-          </a>
+          </button>
         </div>
       )}
     </nav>
