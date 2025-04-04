@@ -38,7 +38,7 @@ export default function ContactSection() {
             <input
               type="hidden"
               name="_next"
-              value="https://mzio.vercel.app/"
+              value="https://mzio.vercel.app/?contact_submit=true"
             />
             <input
               type="text"

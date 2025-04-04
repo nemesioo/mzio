@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import Navbar from "./_components/navbar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AboutSection from "./_components/about_section";
 import ProjectSection from "./_components/projects_section";
 import ContactSection from "./_components/contacts_section";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 
 export default function HomePage() {
   useEffect(() => {
@@ -60,6 +62,23 @@ export default function HomePage() {
       });
     };
   }, []);
+
+  const searchParams = useSearchParams();
+  const contactSubmit = searchParams.get("contact_submit");
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasMounted && contactSubmit === "true") {
+      toast("Looking forward to be part of your team.");
+
+      const newUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, "", newUrl);
+    }
+  }, [hasMounted, contactSubmit]);
 
   return (
     <main className="bg-white pt-16 text-black">
