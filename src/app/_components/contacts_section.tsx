@@ -30,7 +30,7 @@ export default function ContactSection() {
         </h2>
         <div className="mx-auto w-3/4 max-w-lg rounded-lg bg-white p-6 shadow-lg">
           <form
-            action="https://formsubmit.co/ce9c8ef2776106da05ac3418ce3ec21b"
+            action="https://formsubmit.co/nemesio.resonablejr1025@gmail.com"
             method="POST"
             className="space-y-4"
           >
