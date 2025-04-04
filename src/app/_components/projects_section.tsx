@@ -146,7 +146,7 @@ export default function ProjectSection() {
       <div className="flex flex-col items-center justify-center text-center">
         <h2 className="mb-6 text-5xl font-bold">My Projects</h2>
         <p className="mb-8 text-lg text-gray-600">
-          Here are some of the projects I've worked on.
+          Here are some of the projects I&apos;ve worked on.
         </p>
       </div>
 
