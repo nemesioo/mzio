@@ -1,36 +1,73 @@
+"use client";
+
 import Link from "next/link";
+import Navbar from "./_components/navbar";
+import { useEffect } from "react";
+import AboutSection from "./_components/about_section";
+import ProjectSection from "./_components/projects_section";
+import ContactSection from "./_components/contacts_section";
 
 export default function HomePage() {
+  useEffect(() => {
+    //   const anchors =
+    //     document.querySelectorAll<HTMLAnchorElement>("a[href^='#']");
+
+    //   anchors.forEach((anchor) => {
+    //     anchor.addEventListener("click", function (e: Event) {
+    //       e.preventDefault();
+
+    //       const targetId = (this as HTMLAnchorElement)
+    //         .getAttribute("href")!
+    //         .substring(1);
+    //       const targetElement = document.getElementById(targetId);
+
+    //       if (targetElement) {
+    //         targetElement.scrollTo({
+    //           top: targetElement.offsetTop - 64,
+    //           behavior: "smooth",
+    //         });
+    //       }
+    //     });
+    //   });
+
+    //   return () => {
+    //     anchors.forEach((anchor) => {
+    //       anchor.removeEventListener("click", function (e: Event) {}); // Cleanup event listeners
+    //     });
+    //   };
+    const handleAnchorClick = (event: Event) => {
+      event.preventDefault();
+      const targetId = (event.currentTarget as HTMLAnchorElement)
+        .getAttribute("href")!
+        .substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 64, // Offset navbar height (adjust if needed)
+          behavior: "smooth",
+        });
+      }
+    };
+
+    document.querySelectorAll("a[href^='#']").forEach((anchor) => {
+      anchor.addEventListener("click", handleAnchorClick);
+    });
+
+    return () => {
+      document.querySelectorAll("a[href^='#']").forEach((anchor) => {
+        anchor.removeEventListener("click", handleAnchorClick);
+      });
+    };
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
+    <main className="bg-white pt-16 text-black">
+      <Navbar />
+      <div>
+        <AboutSection />
+        <ProjectSection />
+        <ContactSection />
       </div>
     </main>
   );
